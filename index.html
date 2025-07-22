@@ -185,5 +185,227 @@
     transition: color 0.3s ease;
   }
   .socials a:hover {
-    color: #159f8
+    color: #159f8f;
+  }
+  /* CARTE */
+  .map {
+    margin: 50px auto;
+    max-width: 650px;
+    height: 430px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 6px 30px rgba(50, 205, 153, 0.15);
+  }
+  .map iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+  /* FOOTER */
+  .footer {
+    background: #28b485; /* vert lime sombre */
+    color: #d0f0e8;
+    padding: 40px 20px 15px;
+    font-size: 0.9rem;
+    font-family: 'Montserrat', sans-serif;
+    margin-top: 60px;
+  }
+  .footer-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 25px;
+  }
+  .footer-info h3 {
+    font-family: 'Lora', serif;
+    font-weight: 700;
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+  }
+  .footer-info p {
+    margin: 6px 0;
+    line-height: 1.4;
+  }
+  .footer-info a {
+    color: #a0e9d5;
+    text-decoration: underline;
+  }
+  .footer-info a:hover {
+    color: #20c997;
+  }
+  .footer-socials {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  .footer-socials a {
+    color: #a0e9d5;
+    font-weight: 600;
+    font-size: 1.1rem;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  .footer-socials a:hover {
+    color: #20c997;
+  }
+  .footer-bottom {
+    max-width: 1100px;
+    margin: 20px auto 0;
+    text-align: center;
+    color: #80cbc4;
+    font-size: 0.85rem;
+  }
+  /* RESPONSIVE */
+  @media (max-width: 800px) {
+    .grid-item {
+      flex: 1 1 calc(50% - 40px);
+    }
+  }
+  @media (max-width: 480px) {
+    .grid-item {
+      flex: 1 1 100%;
+    }
+  }
+  @media(max-width: 700px) {
+    .footer-container {
+      flex-direction: column;
+      align-items: center;
+    }
+    .nav-container {
+      flex-direction: column;
+      gap: 15px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<header class="navbar">
+  <nav class="nav-container">
+    <a href="#mocktails" class="nav-logo">Équilibraction</a>
+    <ul class="nav-links">
+      <li><a href="#mocktails">Mocktails</a></li>
+      <li><a href="#testimonials">Avis</a></li>
+      <li><a href="#reservation">Réservation</a></li>
+      <li><a href="#location">Nous trouver</a></li>
+    </ul>
+  </nav>
+</header>
+
+<!-- HÉRO -->
+<div class="hero">
+  <img src="https://images.unsplash.com/photo-1588854337221-4ec1a264fcef" class="active" alt="Mocktail 1" />
+  <img src="https://images.unsplash.com/photo-1590080878062-0c8d3b4c4ec5" alt="Mocktail 2" />
+  <img src="https://images.unsplash.com/photo-1571079931231-a639a6c2a8ff" alt="Mocktail 3" />
+</div>
+
+<!-- MOCKTAILS -->
+<section class="section" id="mocktails">
+  <h2>Nos Mocktails Vedettes</h2>
+  <div class="grid">
+    <div class="grid-item" tabindex="0">
+      <img src="https://images.unsplash.com/photo-1559181567-c3190ca9959b" alt="Mocktail Tropical" />
+      <h4>Tropical Zen</h4>
+      <p>Ananas, citron vert, menthe fraîche et eau pétillante.</p>
+    </div>
+    <div class="grid-item" tabindex="0">
+      <img src="https://images.unsplash.com/photo-1582577434955-b8a070a64616" alt="Mocktail Framboise" />
+      <h4>Rouge Passion</h4>
+      <p>Framboises, hibiscus, lime et touche de sirop d’érable.</p>
+    </div>
+    <div class="grid-item" tabindex="0">
+      <img src="https://images.unsplash.com/photo-1624001587009-1b7f6913688d" alt="Mocktail Mangue" />
+      <h4>Sunset Mango</h4>
+      <p>Mangue, citron, gingembre et soda vanille.</p>
+    </div>
+  </div>
+</section>
+
+<!-- AVIS CLIENTS -->
+<section class="section" id="testimonials" style="background-color:#d1f0e9;">
+  <h2>Ce que nos clients disent</h2>
+  <div class="testimonial">"Ambiance unique et mocktails délicieux, parfait pour une soirée entre amis." – Camille D.</div>
+  <div class="testimonial">"Le concept est génial, tout est frais et sans alcool, j’adore!" – Maxime T.</div>
+</section>
+
+<!-- FORMULAIRE DE RÉSERVATION -->
+<section class="section" id="reservation">
+  <h2>Réservez une table</h2>
+  <div class="form-container">
+    <form action="https://formspree.io/f/yourformid" method="POST">
+      <input type="text" name="Nom" placeholder="Votre nom" required />
+      <input type="email" name="Email" placeholder="Votre courriel" required />
+      <input type="text" name="Date" placeholder="Date souhaitée" required />
+      <input type="text" name="Heure" placeholder="Heure" required />
+      <textarea name="Message" rows="4" placeholder="Un mot à nous laisser..."></textarea>
+      <button type="submit">Envoyer la réservation</button>
+    </form>
+  </div>
+  <div class="socials">
+    <a href="https://www.instagram.com/" target="_blank" aria-label="Instagram">Instagram</a> |
+    <a href="https://www.facebook.com/" target="_blank" aria-label="Facebook">Facebook</a>
+  </div>
+</section>
+
+<!-- CARTE -->
+<section class="section" id="location">
+  <h2>Nous trouver</h2>
+  <div class="map">
+    <iframe
+      src="https://maps.google.com/maps?q=155%20rue%20Champlain%2C%20Saint-Jean-sur-Richelieu&t=&z=15&ie=UTF8&iwloc=&output=embed"
+      allowfullscreen
+      loading="lazy"
+    ></iframe>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-container">
+    <div class="footer-info">
+      <h3>Équilibraction & Mocktail Bar</h3>
+      <p>155 rue Champlain, Saint-Jean-sur-Richelieu</p>
+      <p>Tél. : (514) 123-4567</p>
+      <p>Email : <a href="mailto:contact@equilibraction.com">contact@equilibraction.com</a></p>
+    </div>
+    <div class="footer-socials">
+      <a href="https://www.instagram.com/" target="_blank" aria-label="Instagram">Instagram</a>
+      <a href="https://www.facebook.com/" target="_blank" aria-label="Facebook">Facebook</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    © 2025 Équilibraction. Tous droits réservés.
+  </div>
+</footer>
+
+<!-- JS : slider images + animation scroll -->
+<script>
+  let slides = document.querySelectorAll('.hero img');
+  let index = 0;
+  setInterval(() => {
+    slides[index].classList.remove('active');
+    index = (index + 1) % slides.length;
+    slides[index].classList.add('active');
+  }, 4000);
+
+  // Scroll animation
+  function reveal() {
+    const sections = document.querySelectorAll('.section');
+    const windowHeight = window.innerHeight;
+    const revealPoint = 150;
+    sections.forEach((section) => {
+      const sectionTop = section.getBoundingClientRect().top;
+      if (sectionTop < windowHeight - revealPoint) {
+        section.classList.add('visible');
+      }
+    });
+  }
+  window.addEventListener('scroll', reveal);
+  window.addEventListener('load', reveal);
+</script>
+</body>
+</html>
 
