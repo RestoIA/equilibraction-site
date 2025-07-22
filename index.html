@@ -56,11 +56,27 @@
     font-weight: 600;
     font-size: 1rem;
     text-decoration: none;
-    transition: color 0.3s ease;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
   }
   .nav-links li a:hover {
-    color: #1abc9c; /* turquoise vif */
+    color: #149071;
+    text-shadow: 0 0 5px #149071aa;
   }
+
+  /* BOUTON HAMBURGER */
+  .nav-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+  }
+  .nav-toggle span {
+    height: 3px;
+    width: 25px;
+    background: #e0f7f1;
+    margin-bottom: 5px;
+    border-radius: 2px;
+  }
+
   /* HÉRO */
   .hero {
     position: relative;
@@ -118,7 +134,7 @@
   .grid-item h4 {
     margin: 15px 0 8px;
     font-size: 1.3rem;
-    color: #1abc9c;
+    color: #149071;
   }
   .grid-item p {
     font-size: 1.05rem;
@@ -155,11 +171,11 @@
   }
   .form-container input:focus,
   .form-container textarea:focus {
-    border-color: #1abc9c;
+    border-color: #149071;
     outline: none;
   }
   .form-container button {
-    background-color: #1abc9c;
+    background-color: #149071;
     color: white;
     border: none;
     padding: 18px 40px;
@@ -170,7 +186,7 @@
     transition: background-color 0.3s ease;
   }
   .form-container button:hover {
-    background-color: #159f8f;
+    background-color: #0f6656;
   }
   /* RÉSEAUX SOCIAUX */
   .socials {
@@ -179,13 +195,13 @@
   .socials a {
     margin: 0 14px;
     text-decoration: none;
-    color: #1abc9c;
+    color: #149071;
     font-weight: 700;
     font-size: 1.2rem;
     transition: color 0.3s ease;
   }
   .socials a:hover {
-    color: #159f8f;
+    color: #0f6656;
   }
   /* CARTE */
   .map {
@@ -203,8 +219,8 @@
   }
   /* FOOTER */
   .footer {
-    background: #28b485; /* vert lime sombre */
-    color: #d0f0e8;
+    background: #28b485;
+    color: #b3d8d0; /* texte plus foncé */
     padding: 40px 20px 15px;
     font-size: 0.9rem;
     font-family: 'Montserrat', sans-serif;
@@ -231,9 +247,11 @@
   .footer-info a {
     color: #a0e9d5;
     text-decoration: underline;
+    transition: color 0.3s ease;
   }
   .footer-info a:hover {
-    color: #20c997;
+    color: #149071 !important;
+    text-decoration: underline;
   }
   .footer-socials {
     display: flex;
@@ -248,7 +266,7 @@
     transition: color 0.3s ease;
   }
   .footer-socials a:hover {
-    color: #20c997;
+    color: #149071 !important;
   }
   .footer-bottom {
     max-width: 1100px;
@@ -276,6 +294,25 @@
     .nav-container {
       flex-direction: column;
       gap: 15px;
+      position: relative;
+    }
+    .nav-links {
+      display: none;
+      flex-direction: column;
+      background: #32cd99;
+      position: absolute;
+      top: 60px;
+      right: 20px;
+      border-radius: 8px;
+      width: 160px;
+      box-shadow: 0 8px 20px rgba(50, 205, 153, 0.3);
+      z-index: 9999;
+    }
+    .nav-links.show {
+      display: flex;
+    }
+    .nav-toggle {
+      display: flex;
     }
   }
 </style>
@@ -286,6 +323,14 @@
 <header class="navbar">
   <nav class="nav-container">
     <a href="#mocktails" class="nav-logo">Équilibraction</a>
+
+    <!-- BOUTON HAMBURGER -->
+    <div class="nav-toggle" aria-label="Menu" role="button" tabindex="0">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
     <ul class="nav-links">
       <li><a href="#mocktails">Mocktails</a></li>
       <li><a href="#testimonials">Avis</a></li>
@@ -381,7 +426,7 @@
   </div>
 </footer>
 
-<!-- JS : slider images + animation scroll -->
+<!-- JS : slider images + animation scroll + hamburger menu -->
 <script>
   let slides = document.querySelectorAll('.hero img');
   let index = 0;
@@ -405,7 +450,23 @@
   }
   window.addEventListener('scroll', reveal);
   window.addEventListener('load', reveal);
+
+  // Hamburger menu toggle
+  const navToggle = document.querySelector('.nav-toggle');
+  const navLinks = document.querySelector('.nav-links');
+
+  navToggle.addEventListener('click', () => {
+    navLinks.classList.toggle('show');
+  });
+
+  navToggle.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      navLinks.classList.toggle('show');
+    }
+  });
 </script>
 </body>
 </html>
+
 
