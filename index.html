@@ -1,88 +1,202 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Équilibraction & Mocktail Bar</title>
-  <style>
-    body { margin: 0; font-family: 'Arial', sans-serif; color: #333; background-color: #f0fefb; }
-    h2 { font-size: 2.5rem; margin-bottom: 20px; color: #008080; }
-    .hero { position: relative; height: 400px; overflow: hidden; }
-    .hero img { width: 100%; height: 100%; object-fit: cover; position: absolute; top: 0; left: 0; opacity: 0; transition: opacity 1s; }
-    .hero img.active { opacity: 1; }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Équilibraction & Mocktail Bar</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora&family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
+<style>
+  body {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    color: #333;
+    background-color: #f0fefb;
+    line-height: 1.6;
+  }
+  h2 {
+    font-family: 'Lora', serif;
+    font-weight: 700;
+    font-size: 2.8rem;
+    margin-bottom: 20px;
+    color: #008080;
+  }
+  .hero {
+    position: relative;
+    height: 450px;
+    overflow: hidden;
+  }
+  .hero img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0; left: 0;
+    opacity: 0;
+    transition: opacity 1.2s ease-in-out;
+  }
+  .hero img.active {
+    opacity: 1;
+  }
 
-    .section { padding: 60px 20px; text-align: center; }
-    .grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; }
-    .grid-item { flex: 1 1 calc(33% - 40px); max-width: 300px; }
-    .grid-item img { width: 100%; border-radius: 8px; }
-    .grid-item h4 { margin: 10px 0 5px; font-size: 1.2rem; color: #006d5b; }
-    .grid-item p { font-size: 1rem; color: #555; }
+  .section {
+    padding: 70px 20px;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 1s ease, transform 1s ease;
+  }
+  .section.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px;
+  }
+  .grid-item {
+    flex: 1 1 calc(33% - 50px);
+    max-width: 320px;
+    background: #d9f2ef;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0,128,128,0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+  }
+  .grid-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 15px 30px rgba(0,128,128,0.4);
+  }
+  .grid-item img {
+    width: 100%;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+  }
+  .grid-item h4 {
+    margin: 15px 0 8px;
+    font-size: 1.3rem;
+    color: #006d5b;
+  }
+  .grid-item p {
+    font-size: 1.05rem;
+    color: #444;
+    padding: 0 15px 15px;
+  }
 
-    .testimonial { max-width: 800px; margin: 20px auto; font-style: italic; color: #444; }
+  .testimonial {
+    max-width: 850px;
+    margin: 30px auto;
+    font-style: italic;
+    color: #444;
+    font-size: 1.15rem;
+  }
 
-    .cta-btn {
-      display: inline-block;
-      background: #20c997;
-      color: #fff;
-      padding: 15px 40px;
-      border-radius: 40px;
-      text-decoration: none;
-      font-size: 1.2rem;
-      margin-top: 20px;
+  .form-container {
+    background-color: #e6fff9;
+    padding: 45px 30px;
+    border-radius: 12px;
+    max-width: 650px;
+    margin: auto;
+    box-shadow: 0 6px 25px rgba(0,128,128,0.15);
+  }
+  .form-container input,
+  .form-container textarea {
+    width: 100%;
+    padding: 14px;
+    margin: 15px 0;
+    border: 1.5px solid #008080;
+    border-radius: 7px;
+    font-size: 1rem;
+    font-family: 'Montserrat', sans-serif;
+    transition: border-color 0.3s ease;
+  }
+  .form-container input:focus,
+  .form-container textarea:focus {
+    border-color: #20c997;
+    outline: none;
+  }
+  .form-container button {
+    background-color: #20c997;
+    color: white;
+    border: none;
+    padding: 18px 40px;
+    border-radius: 40px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    font-weight: 700;
+    transition: background-color 0.3s ease;
+  }
+  .form-container button:hover {
+    background-color: #0f9f80;
+  }
+
+  .socials {
+    margin-top: 35px;
+  }
+  .socials a {
+    margin: 0 14px;
+    text-decoration: none;
+    color: #20c997;
+    font-weight: 700;
+    font-size: 1.2rem;
+    transition: color 0.3s ease;
+  }
+  .socials a:hover {
+    color: #0f9f80;
+  }
+
+  .map {
+    margin: 50px auto;
+    max-width: 650px;
+    height: 430px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 6px 30px rgba(0,128,128,0.15);
+  }
+  .map iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+
+  @media (max-width: 800px) {
+    .grid-item {
+      flex: 1 1 calc(50% - 40px);
     }
-
-    .map { margin: 40px auto; max-width: 600px; height: 400px; }
-    .map iframe { width: 100%; height: 100%; border: 0; }
-
-    .form-container { background-color: #e6fff9; padding: 40px 20px; border-radius: 10px; max-width: 600px; margin: auto; }
-    .form-container input, .form-container textarea {
-      width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #ccc; border-radius: 5px;
+  }
+  @media (max-width: 480px) {
+    .grid-item {
+      flex: 1 1 100%;
     }
-    .form-container button {
-      background-color: #20c997; color: white; border: none; padding: 15px 30px;
-      border-radius: 5px; cursor: pointer; font-size: 1rem;
-    }
-
-    .socials { margin-top: 30px; }
-    .socials a {
-      margin: 0 10px; text-decoration: none; color: #20c997; font-weight: bold;
-    }
-
-    @media(max-width: 768px) {
-      .grid-item { flex: 1 1 calc(50% - 40px); }
-    }
-
-    @media(max-width: 480px) {
-      .grid-item { flex: 1 1 100%; }
-    }
-  </style>
+  }
+</style>
 </head>
 <body>
 
   <!-- HÉRO -->
   <div class="hero">
-    <img src="https://images.unsplash.com/photo-1588854337221-4ec1a264fcef" class="active" alt="Mocktail 1">
-    <img src="https://images.unsplash.com/photo-1590080878062-0c8d3b4c4ec5" alt="Mocktail 2">
-    <img src="https://images.unsplash.com/photo-1571079931231-a639a6c2a8ff" alt="Mocktail 3">
+    <img src="https://images.unsplash.com/photo-1588854337221-4ec1a264fcef" class="active" alt="Mocktail 1" />
+    <img src="https://images.unsplash.com/photo-1590080878062-0c8d3b4c4ec5" alt="Mocktail 2" />
+    <img src="https://images.unsplash.com/photo-1571079931231-a639a6c2a8ff" alt="Mocktail 3" />
   </div>
 
   <!-- MOCKTAILS -->
-  <section class="section">
+  <section class="section" id="mocktails">
     <h2>Nos Mocktails Vedettes</h2>
     <div class="grid">
-      <div class="grid-item">
-        <img src="https://images.unsplash.com/photo-1559181567-c3190ca9959b" alt="Mocktail Tropical">
+      <div class="grid-item" tabindex="0">
+        <img src="https://images.unsplash.com/photo-1559181567-c3190ca9959b" alt="Mocktail Tropical" />
         <h4>Tropical Zen</h4>
         <p>Ananas, citron vert, menthe fraîche et eau pétillante.</p>
       </div>
-      <div class="grid-item">
-        <img src="https://images.unsplash.com/photo-1582577434955-b8a070a64616" alt="Mocktail Framboise">
+      <div class="grid-item" tabindex="0">
+        <img src="https://images.unsplash.com/photo-1582577434955-b8a070a64616" alt="Mocktail Framboise" />
         <h4>Rouge Passion</h4>
         <p>Framboises, hibiscus, lime et touche de sirop d’érable.</p>
       </div>
-      <div class="grid-item">
-        <img src="https://images.unsplash.com/photo-1624001587009-1b7f6913688d" alt="Mocktail Mangue">
+      <div class="grid-item" tabindex="0">
+        <img src="https://images.unsplash.com/photo-1624001587009-1b7f6913688d" alt="Mocktail Mangue" />
         <h4>Sunset Mango</h4>
         <p>Mangue, citron, gingembre et soda vanille.</p>
       </div>
@@ -90,40 +204,44 @@
   </section>
 
   <!-- AVIS CLIENTS -->
-  <section class="section" style="background-color:#e0f7f1;">
+  <section class="section" id="testimonials" style="background-color:#e0f7f1;">
     <h2>Ce que nos clients disent</h2>
     <div class="testimonial">"Ambiance unique et mocktails délicieux, parfait pour une soirée entre amis." – Camille D.</div>
     <div class="testimonial">"Le concept est génial, tout est frais et sans alcool, j’adore!" – Maxime T.</div>
   </section>
 
   <!-- FORMULAIRE DE RÉSERVATION -->
-  <section class="section">
+  <section class="section" id="reservation">
     <h2>Réservez une table</h2>
     <div class="form-container">
       <form action="https://formspree.io/f/yourformid" method="POST">
-        <input type="text" name="Nom" placeholder="Votre nom" required>
-        <input type="email" name="Email" placeholder="Votre courriel" required>
-        <input type="text" name="Date" placeholder="Date souhaitée" required>
-        <input type="text" name="Heure" placeholder="Heure" required>
+        <input type="text" name="Nom" placeholder="Votre nom" required />
+        <input type="email" name="Email" placeholder="Votre courriel" required />
+        <input type="text" name="Date" placeholder="Date souhaitée" required />
+        <input type="text" name="Heure" placeholder="Heure" required />
         <textarea name="Message" rows="4" placeholder="Un mot à nous laisser..."></textarea>
         <button type="submit">Envoyer la réservation</button>
       </form>
     </div>
     <div class="socials">
-      <a href="https://www.instagram.com/" target="_blank">Instagram</a> |
-      <a href="https://www.facebook.com/" target="_blank">Facebook</a>
+      <a href="https://www.instagram.com/" target="_blank" aria-label="Instagram">Instagram</a> |
+      <a href="https://www.facebook.com/" target="_blank" aria-label="Facebook">Facebook</a>
     </div>
   </section>
 
   <!-- CARTE -->
-  <section class="section">
+  <section class="section" id="location">
     <h2>Nous trouver</h2>
     <div class="map">
-      <iframe src="https://maps.google.com/maps?q=155%20rue%20Champlain%2C%20Saint-Jean-sur-Richelieu&t=&z=15&ie=UTF8&iwloc=&output=embed" allowfullscreen></iframe>
+      <iframe
+        src="https://maps.google.com/maps?q=155%20rue%20Champlain%2C%20Saint-Jean-sur-Richelieu&t=&z=15&ie=UTF8&iwloc=&output=embed"
+        allowfullscreen
+        loading="lazy"
+      ></iframe>
     </div>
   </section>
 
-  <!-- SLIDER -->
+  <!-- JS : slider images -->
   <script>
     let slides = document.querySelectorAll('.hero img');
     let index = 0;
@@ -132,7 +250,21 @@
       index = (index + 1) % slides.length;
       slides[index].classList.add('active');
     }, 4000);
-  </script>
 
+    // Scroll animation
+    function reveal() {
+      const sections = document.querySelectorAll('.section');
+      const windowHeight = window.innerHeight;
+      const revealPoint = 150;
+      sections.forEach((section) => {
+        const sectionTop = section.getBoundingClientRect().top;
+        if (sectionTop < windowHeight - revealPoint) {
+          section.classList.add('visible');
+        }
+      });
+    }
+    window.addEventListener('scroll', reveal);
+    window.addEventListener('load', reveal);
+  </script>
 </body>
 </html>
