@@ -1,187 +1,207 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Équilibraction & Mocktail Bar</title>
-  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
   <style>
-    body {
+    * {
       margin: 0;
-      font-family: 'Poppins', sans-serif;
-      background: #f8fdfc;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #e6fff5, #d0fff1);
       color: #222;
     }
+
     header {
-      background: linear-gradient(to right, #a8edea, #01c6a3);
-      color: #fff;
-      padding: 1.5rem;
+      background: linear-gradient(90deg, #00b894, #00cec9);
+      color: white;
+      padding: 20px;
       text-align: center;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
+
     header h1 {
-      margin: 0;
-      font-size: 2.5rem;
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem;
+      margin-bottom: 5px;
     }
+
     header p {
       font-size: 1.2rem;
+      opacity: 0.9;
     }
-    section {
-      padding: 3rem 1.5rem;
-      max-width: 1200px;
-      margin: auto;
-    }
-    .swiper-container {
+
+    .swiper {
       width: 100%;
-      height: 300px;
-      margin-bottom: 2rem;
+      height: 60vh;
     }
+
     .swiper-slide {
       background-size: cover;
       background-position: center;
-      border-radius: 10px;
     }
+
+    section {
+      padding: 60px 20px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
     h2 {
       font-size: 2rem;
-      color: #01c6a3;
-      margin-bottom: 1rem;
+      margin-bottom: 20px;
+      color: #00b894;
     }
-    .mocktails, .events {
+
+    .drinks, .events {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 2rem;
+      gap: 30px;
     }
-    .card {
-      background: #fff;
+
+    .drink, .event {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      overflow: hidden;
+      text-align: center;
+    }
+
+    .drink img, .event img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .drink h3, .event h3 {
+      margin: 15px 0 10px;
+    }
+
+    .form-section form {
+      background: #ffffff;
+      padding: 30px;
       border-radius: 10px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-      padding: 1rem;
-      transition: transform 0.3s;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
     }
-    .card:hover {
-      transform: translateY(-5px);
-    }
-    .card img {
-      max-width: 100%;
-      border-radius: 8px;
-    }
-    form {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      background: #fff;
-      padding: 2rem;
-      border-radius: 10px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-    }
-    form input, form textarea, form button {
-      padding: 0.8rem;
+
+    .form-section input, .form-section textarea {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 6px;
       border: 1px solid #ccc;
-      border-radius: 5px;
-      font-size: 1rem;
     }
-    form button {
-      background: #01c6a3;
+
+    .form-section button {
+      background-color: #00b894;
       color: white;
       border: none;
+      padding: 12px 20px;
       cursor: pointer;
+      border-radius: 6px;
     }
+
     footer {
-      background: #222;
-      color: #fff;
       text-align: center;
-      padding: 1rem;
-    }
-    footer a {
-      color: #a8edea;
-      margin: 0 0.5rem;
-      text-decoration: none;
+      padding: 30px;
+      background: #00b894;
+      color: white;
     }
   </style>
 </head>
+
 <body>
   <header>
     <h1>Équilibraction & Mocktail Bar</h1>
-    <p>155 rue Champlain, Saint-Jean-sur-Richelieu</p>
+    <p>Une oasis sans alcool à Saint-Jean-sur-Richelieu</p>
   </header>
 
-  <section>
-    <div class="swiper-container">
-      <div class="swiper-wrapper">
-        <div class="swiper-slide" style="background-image:url('https://images.unsplash.com/photo-1551024709-8f23befc6f87')"></div>
-        <div class="swiper-slide" style="background-image:url('https://images.unsplash.com/photo-1600891964599-f61ba0e24092')"></div>
-        <div class="swiper-slide" style="background-image:url('https://images.unsplash.com/photo-1504674900247-0877df9cc836')"></div>
-      </div>
+  <!-- Slider -->
+  <div class="swiper">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide" style="background-image:url('https://images.unsplash.com/photo-1585238342028-5f55b27e3a9f')"></div>
+      <div class="swiper-slide" style="background-image:url('https://images.unsplash.com/photo-1617191514002-bf0bbf6b44e2')"></div>
+      <div class="swiper-slide" style="background-image:url('https://images.unsplash.com/photo-1571071189976-84f118ad6f86')"></div>
     </div>
+  </div>
 
-    <h2>Nos Mocktails</h2>
-    <div class="mocktails">
-      <div class="card">
-        <img src="https://images.unsplash.com/photo-1601004890684-d8cbf643f5f2" alt="Mocktail 1">
-        <h3>Zest Tropical</h3>
-        <p>Un mélange rafraîchissant d'ananas, citron vert et menthe.</p>
+  <!-- Drinks -->
+  <section>
+    <h2>Mocktails Vedettes</h2>
+    <div class="drinks">
+      <div class="drink">
+        <img src="https://images.unsplash.com/photo-1601924928344-1a6fd8a1ea1d" alt="Green Breeze" />
+        <h3>Green Breeze</h3>
+        <p>Un cocktail frais à la lime, menthe et concombre.</p>
       </div>
-      <div class="card">
-        <img src="https://images.unsplash.com/photo-1590080877490-752bf80f1c51" alt="Mocktail 2">
-        <h3>Fraîcheur Mentholée</h3>
-        <p>Menthe, lime et soda, parfait pour l'été.</p>
+      <div class="drink">
+        <img src="https://images.unsplash.com/photo-1580466848041-0e3d739a35f2" alt="Tropical Zen" />
+        <h3>Tropical Zen</h3>
+        <p>Ananas, basilic, gingembre, pour une détente instantanée.</p>
       </div>
-      <div class="card">
-        <img src="https://images.unsplash.com/photo-1558036117-15d82a90b9b1" alt="Mocktail 3">
-        <h3>Pêche Passion</h3>
-        <p>Saveurs de pêche, fruit de la passion et touche de basilic.</p>
+      <div class="drink">
+        <img src="https://images.unsplash.com/photo-1608422050638-d90c76996929" alt="Turquoise Dream" />
+        <h3>Turquoise Dream</h3>
+        <p>Une touche fruitée et florale dans un verre bleu océan.</p>
       </div>
     </div>
   </section>
 
+  <!-- Événements -->
   <section>
     <h2>Événements</h2>
     <div class="events">
-      <div class="card">
-        <h3>Soirée Jazz & Dégustation</h3>
-        <p>Tous les jeudis 19h - Ambiance musicale avec une sélection de mocktails.</p>
+      <div class="event">
+        <img src="https://images.unsplash.com/photo-1600891965051-f8c8e8b0d65c" alt="Atelier Mocktails" />
+        <h3>Atelier Créatif</h3>
+        <p>Apprenez à créer vos propres mocktails avec notre mixologue invité!</p>
       </div>
-      <div class="card">
-        <h3>Atelier Création de Mocktails</h3>
-        <p>Initiez-vous à l'art du mocktail chaque dimanche 15h avec notre mixologue.</p>
+      <div class="event">
+        <img src="https://images.unsplash.com/photo-1573164574237-150a5fba2015" alt="Soirée Jazz" />
+        <h3>Soirée Jazz</h3>
+        <p>Ambiance relaxante avec musique live tous les jeudis soir.</p>
+      </div>
+      <div class="event">
+        <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5" alt="Marché local" />
+        <h3>Marché Local</h3>
+        <p>Produits artisanaux, dégustations et animations les dimanches.</p>
       </div>
     </div>
   </section>
 
-  <section>
+  <!-- Réservation -->
+  <section class="form-section">
     <h2>Réservation</h2>
     <form action="https://formspree.io/f/meozakwn" method="POST">
       <input type="text" name="name" placeholder="Nom complet" required />
-      <input type="email" name="email" placeholder="Votre courriel" required />
-      <input type="text" name="phone" placeholder="Numéro de téléphone" />
-      <textarea name="message" placeholder="Détails de votre réservation..." required></textarea>
+      <input type="email" name="email" placeholder="Adresse courriel" required />
+      <textarea name="message" rows="5" placeholder="Détails de votre réservation"></textarea>
       <button type="submit">Réserver</button>
     </form>
   </section>
 
   <footer>
-    <p>Suivez-nous :
-      <a href="#" target="_blank">Instagram</a> |
-      <a href="#" target="_blank">Facebook</a>
-    </p>
-    <p>&copy; 2025 Équilibraction & Mocktail Bar</p>
+    <p>📍 155 rue Champlain, Saint-Jean-sur-Richelieu | ✉️ <a href="mailto:info@mocktailbar.com" style="color: white; text-decoration: underline;">info@mocktailbar.com</a></p>
+    <p>📱 <a href="#" style="color: white">Instagram</a> | <a href="#" style="color: white">Facebook</a></p>
   </footer>
 
-  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   <script>
-    const swiper = new Swiper('.swiper-container', {
+    const swiper = new Swiper('.swiper', {
       loop: true,
       autoplay: {
-        delay: 3000,
-        disableOnInteraction: false,
-      },
-      slidesPerView: 1,
-      spaceBetween: 30,
-      pagination: {
-        el: '.swiper-pagination',
-        clickable: true,
+        delay: 5000,
       },
     });
   </script>
 </body>
+
 </html>
