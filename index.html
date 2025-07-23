@@ -3,117 +3,420 @@
 
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Équilibraction & Mocktail Bar</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+  <meta name="description" content="Équilibraction & Mocktail Bar à Saint-Jean-sur-Richelieu – Détente, saveurs et ambiance mocktail unique." />
+
+  <!-- Fonts -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" />
+
+  <!-- Swiper CSS -->
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"
+  />
+
+  <!-- FontAwesome for icons -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+  />
+
   <style>
-    * {
-      margin: 0;
-      padding: 0;
+    /* Reset */
+    *, *::before, *::after {
       box-sizing: border-box;
-      font-family: 'Montserrat', sans-serif;
     }
 
     body {
-      background: linear-gradient(135deg, #e6fff5, #d0fff1);
-      color: #222;
+      margin: 0;
+      font-family: 'Montserrat', sans-serif;
+      background: #f9f9f9;
+      color: #333;
+      line-height: 1.6;
+      scroll-behavior: smooth;
     }
 
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* HEADER */
     header {
-      background: linear-gradient(90deg, #00b894, #00cec9);
-      color: white;
-      padding: 20px;
-      text-align: center;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      position: fixed;
+      width: 100%;
+      background: rgba(50, 205, 50, 0.9);
+      padding: 1rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 10000;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+      backdrop-filter: saturate(180%) blur(20px);
     }
 
     header h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: 3rem;
-      margin-bottom: 5px;
+      margin: 0;
+      font-weight: 700;
+      font-size: 1.8rem;
+      color: #fff;
+      user-select: none;
+      letter-spacing: 1.2px;
+      cursor: default;
     }
 
-    header p {
-      font-size: 1.2rem;
-      opacity: 0.9;
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
     }
 
+    nav a {
+      color: #fff;
+      font-weight: 600;
+      font-size: 1.05rem;
+      position: relative;
+      padding: 0.2rem 0;
+      transition: color 0.3s;
+    }
+
+    nav a::after {
+      content: "";
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: 0;
+      left: 0;
+      background: #40e0d0;
+      transition: width 0.3s;
+    }
+
+    nav a:hover,
+    nav a:focus {
+      color: #40e0d0;
+    }
+
+    nav a:hover::after,
+    nav a:focus::after {
+      width: 100%;
+    }
+
+    /* Hamburger menu button */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      user-select: none;
+      width: 28px;
+      height: 20px;
+      justify-content: center;
+    }
+
+    .hamburger div {
+      height: 3px;
+      background-color: white;
+      border-radius: 3px;
+      transition: all 0.3s ease;
+    }
+
+    /* Mobile nav */
+    @media (max-width: 768px) {
+      nav {
+        position: fixed;
+        top: 64px;
+        right: 0;
+        background: rgba(50, 205, 50, 0.95);
+        height: calc(100vh - 64px);
+        width: 220px;
+        flex-direction: column;
+        padding-top: 2rem;
+        transform: translateX(100%);
+        transition: transform 0.3s ease;
+        gap: 1.5rem;
+        z-index: 9999;
+      }
+
+      nav.active {
+        transform: translateX(0);
+      }
+
+      nav a {
+        font-size: 1.2rem;
+        padding-left: 1.5rem;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+    }
+
+    /* Hamburger animation */
+    .hamburger.active div:nth-child(1) {
+      transform: rotate(45deg) translateY(7px);
+    }
+
+    .hamburger.active div:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger.active div:nth-child(3) {
+      transform: rotate(-45deg) translateY(-7px);
+    }
+
+    /* Spacer for fixed header */
+    .spacer {
+      height: 64px;
+    }
+
+    /* Swiper Hero Slider */
     .swiper {
       width: 100%;
-      height: 60vh;
+      height: 75vh;
+      margin-bottom: 3rem;
+      user-select: none;
     }
 
     .swiper-slide {
-      background-size: cover;
+      position: relative;
       background-position: center;
+      background-size: cover;
+      filter: brightness(0.85);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
     }
 
-    section {
-      padding: 60px 20px;
+    .swiper-slide::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.7) 100%);
+      z-index: 1;
+    }
+
+    .slide-content {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+      text-align: center;
+      padding: 0 1rem;
+    }
+
+    .slide-content h2 {
+      font-size: 3rem;
+      margin-bottom: 0.5rem;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      font-weight: 800;
+      text-shadow: 0 0 15px rgba(0,0,0,0.7);
+    }
+
+    .slide-content p {
+      font-size: 1.3rem;
+      font-weight: 500;
+      text-shadow: 0 0 10px rgba(0,0,0,0.6);
+    }
+
+    /* Main content */
+    main {
       max-width: 1000px;
-      margin: 0 auto;
+      margin: 0 auto 4rem auto;
+      padding: 0 1rem;
+    }
+
+    /* Section styling */
+    section {
+      margin-bottom: 4rem;
+      opacity: 0;
+      transform: translateY(30px);
     }
 
     h2 {
-      font-size: 2rem;
-      margin-bottom: 20px;
-      color: #00b894;
+      color: #32cd32;
+      font-weight: 700;
+      font-size: 2.4rem;
+      margin-bottom: 1.3rem;
+      text-align: center;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
     }
 
-    .drinks, .events {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 30px;
+    /* About */
+    #about p {
+      font-size: 1.15rem;
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+      line-height: 1.7;
+      color: #444;
     }
 
-    .drink, .event {
-      background: white;
+    /* Reservation form */
+    #reservation {
+      background: #e0f7ef;
+      padding: 3.5rem 2rem;
+      border-radius: 20px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.3rem;
+    }
+
+    label {
+      font-weight: 600;
+      font-size: 1.1rem;
+      color: #333;
+    }
+
+    input,
+    textarea {
+      padding: 1rem 1.2rem;
+      border: 2px solid #32cd32;
       border-radius: 12px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-      overflow: hidden;
-      text-align: center;
-    }
-
-    .drink img, .event img {
+      font-size: 1rem;
+      outline: none;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
       width: 100%;
-      height: 200px;
-      object-fit: cover;
+      font-family: 'Montserrat', sans-serif;
+      color: #222;
+      resize: vertical;
+      box-sizing: border-box;
+      font-weight: 500;
     }
 
-    .drink h3, .event h3 {
-      margin: 15px 0 10px;
+    input:focus,
+    textarea:focus {
+      border-color: #40e0d0 !important;
+      box-shadow: 0 0 12px #40e0d0aa;
     }
 
-    .form-section form {
-      background: #ffffff;
-      padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    }
-
-    .form-section input, .form-section textarea {
-      width: 100%;
-      padding: 10px;
-      margin: 10px 0;
-      border-radius: 6px;
-      border: 1px solid #ccc;
-    }
-
-    .form-section button {
-      background-color: #00b894;
-      color: white;
+    button[type="submit"] {
+      background: #40e0d0;
+      color: #fff;
+      font-weight: 800;
+      padding: 1.3rem;
       border: none;
-      padding: 12px 20px;
+      border-radius: 15px;
+      font-size: 1.3rem;
       cursor: pointer;
-      border-radius: 6px;
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      box-shadow: 0 5px 20px rgba(64, 224, 208, 0.6);
+      user-select: none;
     }
 
-    footer {
+    button[type="submit"]:hover,
+    button[type="submit"]:focus {
+      background-color: #32cd32 !important;
+      outline: none;
+      box-shadow: 0 8px 30px rgba(50, 205, 50, 0.85);
+    }
+
+    /* Confirmation message */
+    #confirmationMessage {
+      margin-top: 1.5rem;
+      padding: 1rem 1.5rem;
+      border-radius: 12px;
+      background-color: #d4f7e1;
+      color: #2a7f4b;
+      font-weight: 700;
+      font-size: 1.15rem;
       text-align: center;
-      padding: 30px;
-      background: #00b894;
+      box-shadow: 0 5px 15px rgba(42, 127, 75, 0.4);
+      display: none;
+      user-select: none;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* Contact */
+    #contact p {
+      font-size: 1.15rem;
+      max-width: 700px;
+      margin: 0.2rem auto 0.8rem auto;
+      text-align: center;
+      color: #444;
+    }
+
+    #contact a {
+      color: #40e0d0;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+
+    #contact a:hover,
+    #contact a:focus {
+      color: #32cd32;
+      outline: none;
+    }
+
+    /* Footer */
+    footer {
+      background: #222;
       color: white;
+      text-align: center;
+      padding: 2rem 1rem;
+      font-size: 0.9rem;
+      letter-spacing: 1px;
+      user-select: none;
+      box-shadow: inset 0 1px 3px rgba(255, 255, 255, 0.1);
+    }
+
+    footer .social-icons {
+      margin-top: 1rem;
+    }
+
+    footer .social-icons a {
+      color: #40e0d0;
+      margin: 0 0.6rem;
+      font-size: 1.7rem;
+      transition: color 0.3s ease;
+      display: inline-block;
+      vertical-align: middle;
+      user-select: none;
+    }
+
+    footer .social-icons a:hover,
+    footer .social-icons a:focus {
+      color: #32cd32;
+      outline: none;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      header {
+        padding: 1rem;
+      }
+
+      header h1 {
+        font-size: 1.5rem;
+      }
+
+      nav a {
+        margin-left: 0;
+      }
+
+      .swiper {
+        height: 50vh;
+      }
+
+      h2 {
+        font-size: 2rem;
+      }
+
+      #reservation {
+        padding: 2.5rem 1rem;
+      }
     }
   </style>
 </head>
@@ -121,85 +424,202 @@
 <body>
   <header>
     <h1>Équilibraction & Mocktail Bar</h1>
-    <p>Une oasis sans alcool à Saint-Jean-sur-Richelieu</p>
+    <nav id="nav">
+      <a href="#about">À propos</a>
+      <a href="#reservation">Réservation</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="hamburger" id="hamburger" aria-label="Menu" role="button" tabindex="0">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
   </header>
 
-  <!-- Slider -->
+  <div class="spacer"></div>
+
+  <!-- Slider Swiper -->
   <div class="swiper">
     <div class="swiper-wrapper">
-      <div class="swiper-slide" style="background-image:url('https://images.unsplash.com/photo-1585238342028-5f55b27e3a9f')"></div>
-      <div class="swiper-slide" style="background-image:url('https://images.unsplash.com/photo-1617191514002-bf0bbf6b44e2')"></div>
-      <div class="swiper-slide" style="background-image:url('https://images.unsplash.com/photo-1571071189976-84f118ad6f86')"></div>
+      <div class="swiper-slide" style="background-image:url('https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=1470&q=80');">
+        <div class="slide-content">
+          <h2>Des mocktails uniques</h2>
+          <p>Goûtez des saveurs originales et équilibrées</p>
+        </div>
+      </div>
+      <div class="swiper-slide" style="background-image:url('https://images.unsplash.com/photo-1524594157366-7d596764f8db?auto=format&fit=crop&w=1470&q=80');">
+        <div class="slide-content">
+          <h2>Ambiance conviviale</h2>
+          <p>Un lieu idéal pour se détendre entre amis</p>
+        </div>
+      </div>
+      <div class="swiper-slide" style="background-image:url('https://images.unsplash.com/photo-1556741533-f6acd647d2fb?auto=format&fit=crop&w=1470&q=80');">
+        <div class="slide-content">
+          <h2>Événements privés</h2>
+          <p>Réservez votre soirée sur mesure</p>
+        </div>
+      </div>
     </div>
+    <!-- Pagination -->
+    <div class="swiper-pagination"></div>
+    <!-- Navigation flèches -->
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
   </div>
 
-  <!-- Drinks -->
-  <section>
-    <h2>Mocktails Vedettes</h2>
-    <div class="drinks">
-      <div class="drink">
-        <img src="https://images.unsplash.com/photo-1601924928344-1a6fd8a1ea1d" alt="Green Breeze" />
-        <h3>Green Breeze</h3>
-        <p>Un cocktail frais à la lime, menthe et concombre.</p>
-      </div>
-      <div class="drink">
-        <img src="https://images.unsplash.com/photo-1580466848041-0e3d739a35f2" alt="Tropical Zen" />
-        <h3>Tropical Zen</h3>
-        <p>Ananas, basilic, gingembre, pour une détente instantanée.</p>
-      </div>
-      <div class="drink">
-        <img src="https://images.unsplash.com/photo-1608422050638-d90c76996929" alt="Turquoise Dream" />
-        <h3>Turquoise Dream</h3>
-        <p>Une touche fruitée et florale dans un verre bleu océan.</p>
-      </div>
-    </div>
-  </section>
+  <main>
+    <section id="about" class="fade-section">
+      <h2>À propos</h2>
+      <p>
+        Bienvenue à <strong>Équilibraction & Mocktail Bar</strong>, votre destination incontournable à Saint-Jean-sur-Richelieu pour une expérience rafraîchissante et raffinée sans alcool.
+        Découvrez nos créations uniques, alliant saveurs exquises et ingrédients naturels, conçues pour ravir vos papilles dans une ambiance chaleureuse et conviviale.
+        Que ce soit pour une soirée détente, un événement spécial ou simplement pour savourer un moment équilibré, notre équipe passionnée est là pour vous offrir un service personnalisé et une atmosphère inoubliable.
+      </p>
+    </section>
 
-  <!-- Événements -->
-  <section>
-    <h2>Événements</h2>
-    <div class="events">
-      <div class="event">
-        <img src="https://images.unsplash.com/photo-1600891965051-f8c8e8b0d65c" alt="Atelier Mocktails" />
-        <h3>Atelier Créatif</h3>
-        <p>Apprenez à créer vos propres mocktails avec notre mixologue invité!</p>
-      </div>
-      <div class="event">
-        <img src="https://images.unsplash.com/photo-1573164574237-150a5fba2015" alt="Soirée Jazz" />
-        <h3>Soirée Jazz</h3>
-        <p>Ambiance relaxante avec musique live tous les jeudis soir.</p>
-      </div>
-      <div class="event">
-        <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5" alt="Marché local" />
-        <h3>Marché Local</h3>
-        <p>Produits artisanaux, dégustations et animations les dimanches.</p>
-      </div>
-    </div>
-  </section>
+    <section id="reservation" class="fade-section">
+      <h2>Réservez votre table</h2>
+      <p>
+        Remplissez le formulaire ci-dessous pour réserver une table ou un événement privé chez <strong>Équilibraction & Mocktail Bar</strong>. Nous vous contacterons rapidement pour confirmer votre réservation.
+      </p>
+      <form id="reservationForm" action="https://formspree.io/f/meozakwn" method="POST" novalidate>
+        <label for="name">Nom complet</label>
+        <input id="name" name="name" type="text" placeholder="Votre nom complet" required />
 
-  <!-- Réservation -->
-  <section class="form-section">
-    <h2>Réservation</h2>
-    <form action="https://formspree.io/f/meozakwn" method="POST">
-      <input type="text" name="name" placeholder="Nom complet" required />
-      <input type="email" name="email" placeholder="Adresse courriel" required />
-      <textarea name="message" rows="5" placeholder="Détails de votre réservation"></textarea>
-      <button type="submit">Réserver</button>
-    </form>
-  </section>
+        <label for="email">Adresse courriel</label>
+        <input id="email" name="email" type="email" placeholder="Votre courriel" required />
+
+        <label for="message">Détails de la réservation</label>
+        <textarea id="message" name="message" placeholder="Date, nombre de personnes, demandes spéciales..." rows="5" required></textarea>
+
+        <button type="submit">Envoyer la réservation</button>
+      </form>
+      <div id="confirmationMessage" role="alert" aria-live="polite"></div>
+    </section>
+
+    <section id="contact" class="fade-section">
+      <h2>Contact</h2>
+      <p>
+        Vous avez des questions ou souhaitez en savoir plus sur nos services? N’hésitez pas à nous contacter directement.
+      </p>
+      <p>📧 Email : <a href="mailto:info@mocktailbar.com">info@mocktailbar.com</a></p>
+      <p>📍 155 rue Champlain, Saint-Jean-sur-Richelieu</p>
+      <p>📸 Suivez-nous sur&nbsp;
+        <a href="https://instagram.com" target="_blank" rel="noopener">Instagram</a> |
+        <a href="https://facebook.com" target="_blank" rel="noopener">Facebook</a>
+      </p>
+    </section>
+  </main>
 
   <footer>
-    <p>📍 155 rue Champlain, Saint-Jean-sur-Richelieu | ✉️ <a href="mailto:info@mocktailbar.com" style="color: white; text-decoration: underline;">info@mocktailbar.com</a></p>
-    <p>📱 <a href="#" style="color: white">Instagram</a> | <a href="#" style="color: white">Facebook</a></p>
+    <p>&copy; 2025 Équilibraction & Mocktail Bar - Tous droits réservés</p>
+    <div class="social-icons" aria-label="Réseaux sociaux">
+      <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram">
+        <i class="fab fa-instagram"></i>
+      </a>
+      <a href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook">
+        <i class="fab fa-facebook-f"></i>
+      </a>
+    </div>
   </footer>
 
-  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <!-- Scripts -->
+
+  <!-- Swiper JS -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+  <!-- GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollTrigger.min.js"></script>
+
   <script>
+    // Hamburger menu toggle
+    const hamburger = document.getElementById('hamburger');
+    const nav = document.getElementById('nav');
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('active');
+      nav.classList.toggle('active');
+    });
+    hamburger.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        hamburger.classList.toggle('active');
+        nav.classList.toggle('active');
+      }
+    });
+
+    // Initialize Swiper slider
     const swiper = new Swiper('.swiper', {
       loop: true,
+      speed: 1000,
       autoplay: {
         delay: 5000,
+        disableOnInteraction: false,
       },
+      effect: 'fade',
+      fadeEffect: { crossFade: true },
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+    });
+
+    // GSAP Animations for fade sections
+    gsap.registerPlugin(ScrollTrigger);
+
+    gsap.utils.toArray('.fade-section').forEach(section => {
+      gsap.fromTo(section, 
+        {opacity: 0, y: 40}, 
+        {
+          opacity: 1, 
+          y: 0, 
+          duration: 1,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: section,
+            start: 'top 85%',
+            toggleActions: 'play none none reverse'
+          }
+        });
+    });
+
+    // Form submission with Fetch API
+    const form = document.getElementById('reservationForm');
+    const confirmationMessage = document.getElementById('confirmationMessage');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      confirmationMessage.style.display = 'none';
+      confirmationMessage.textContent = '';
+
+      const formData = new FormData(form);
+      try {
+        const response = await fetch(form.action, {
+          method: 'POST',
+          headers: { 'Accept': 'application/json' },
+          body: formData,
+        });
+
+        if (response.ok) {
+          confirmationMessage.textContent = "Merci pour votre réservation ! Nous vous contacterons sous peu.";
+          confirmationMessage.style.display = 'block';
+          form.reset();
+        } else {
+          const data = await response.json();
+          if (data.errors) {
+            confirmationMessage.textContent = data.errors.map(error => error.message).join(", ");
+          } else {
+            confirmationMessage.textContent = "Une erreur est survenue. Veuillez réessayer plus tard.";
+          }
+          confirmationMessage.style.display = 'block';
+        }
+      } catch (error) {
+        confirmationMessage.textContent = "Une erreur réseau est survenue. Veuillez vérifier votre connexion.";
+        confirmationMessage.style.display = 'block';
+      }
     });
   </script>
 </body>
