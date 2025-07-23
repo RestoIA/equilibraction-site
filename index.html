@@ -254,67 +254,6 @@
       color: #444;
     }
 
-    /* Mocktails Section */
-    #mocktails {
-      max-width: 1000px;
-      margin: 0 auto 4rem auto;
-      padding: 0 1rem;
-    }
-
-    .mocktail-grid {
-      display: grid;
-      gap: 2rem;
-      grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
-      margin-top: 2rem;
-    }
-
-    .mocktail-card {
-      background: linear-gradient(135deg, #32cd32 0%, #40e0d0 100%);
-      border-radius: 18px;
-      overflow: hidden;
-      box-shadow: 0 8px 30px rgba(50, 205, 50, 0.4);
-      color: white;
-      display: flex;
-      flex-direction: column;
-      cursor: pointer;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .mocktail-card:hover,
-    .mocktail-card:focus-within {
-      transform: translateY(-8px) scale(1.05);
-      box-shadow: 0 15px 40px rgba(64, 224, 208, 0.8);
-    }
-
-    .mocktail-card img {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-      filter: brightness(0.85);
-      transition: filter 0.3s ease;
-    }
-
-    .mocktail-card:hover img,
-    .mocktail-card:focus-within img {
-      filter: brightness(1);
-    }
-
-    .mocktail-card h3 {
-      margin: 1rem 1.2rem 0.5rem 1.2rem;
-      font-weight: 700;
-      font-size: 1.4rem;
-      letter-spacing: 0.8px;
-      text-shadow: 0 0 8px rgba(0,0,0,0.35);
-    }
-
-    .mocktail-card p {
-      margin: 0 1.2rem 1.5rem 1.2rem;
-      font-weight: 500;
-      font-size: 1rem;
-      line-height: 1.4;
-      text-shadow: 0 0 6px rgba(0,0,0,0.25);
-    }
-
     /* Reservation form */
     #reservation {
       background: #e0f7ef;
@@ -453,6 +392,72 @@
       outline: none;
     }
 
+    /* Mocktails Section */
+    #mocktails {
+      max-width: 1000px;
+      margin: 0 auto 4rem auto;
+      padding: 0 1rem;
+    }
+
+    .mocktail-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .mocktail-card {
+      background: white;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      cursor: pointer;
+      user-select: none;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      outline: none;
+    }
+
+    .mocktail-card:hover,
+    .mocktail-card:focus {
+      transform: scale(1.05) translateY(-8px);
+      box-shadow: 0 12px 25px rgba(50, 205, 50, 0.3);
+    }
+
+    .mocktail-card img {
+      width: 100%;
+      display: block;
+      border-bottom: 3px solid #40e0d0;
+      object-fit: cover;
+      aspect-ratio: 4 / 3;
+    }
+
+    .mocktail-card-content {
+      padding: 1rem 1.3rem;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .mocktail-card-content h3 {
+      margin: 0 0 0.5rem 0;
+      font-weight: 700;
+      color: #32cd32;
+      font-size: 1.3rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .mocktail-card-content p {
+      margin: 0;
+      color: #555;
+      flex-grow: 1;
+      font-size: 1rem;
+      line-height: 1.4;
+    }
+
     /* Responsive */
     @media (max-width: 768px) {
       header {
@@ -540,107 +545,94 @@
     </section>
 
     <section id="mocktails" class="fade-section">
-      <h2>Nos Mocktails Signature</h2>
-      <div class="mocktail-grid">
-        <article class="mocktail-card" tabindex="0">
-          <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=600&q=80" alt="Mocktail Tropical" />
-          <h3>Mocktail Tropical</h3>
-          <p>Un mélange frais d'ananas, de citron vert et de menthe pour une explosion de saveurs exotiques.</p>
-        </article>
-        <article class="mocktail-card" tabindex="0">
-          <img src="https://images.unsplash.com/photo-1524594157366-7d596764f8db?auto=format&fit=crop&w=600&q=80" alt="Berry Breeze" />
-          <h3>Berry Breeze</h3>
-          <p>Une touche acidulée de fruits rouges mélangée à une base pétillante pour un plaisir léger et rafraîchissant.</p>
-        </article>
-        <article class="mocktail-card" tabindex="0">
-          <img src="https://images.unsplash.com/photo-1556741533-f6acd647d2fb?auto=format&fit=crop&w=600&q=80" alt="Citrus Glow" />
-          <h3>Citrus Glow</h3>
-          <p>Un cocktail lumineux à base de citron, d'orange sanguine et d'une pointe de gingembre pour éveiller les sens.</p>
-        </article>
+      <h2>Nos Mocktails</h2>
+      <div class="mocktail-list">
+        <div class="mocktail-card" tabindex="0" role="article" aria-label="Mocktail Passion Fruit">
+          <img src="https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?auto=format&fit=crop&w=600&q=80" alt="Photo du mocktail Passion Fruit" />
+          <div class="mocktail-card-content">
+            <h3>Passion Fruit Delight</h3>
+            <p>Un cocktail sans alcool frais et exotique, parfait pour l’été.</p>
+          </div>
+        </div>
+        <div class="mocktail-card" tabindex="0" role="article" aria-label="Mocktail Citrus Breeze">
+          <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=600&q=80" alt="Photo du mocktail Citrus Breeze" />
+          <div class="mocktail-card-content">
+            <h3>Citrus Breeze</h3>
+            <p>Un mélange vif d’agrumes pour réveiller vos sens.</p>
+          </div>
+        </div>
+        <div class="mocktail-card" tabindex="0" role="article" aria-label="Mocktail Berry Bliss">
+          <img src="https://images.unsplash.com/photo-1524594157366-7d596764f8db?auto=format&fit=crop&w=600&q=80" alt="Photo du mocktail Berry Bliss" />
+          <div class="mocktail-card-content">
+            <h3>Berry Bliss</h3>
+            <p>Une explosion de baies rouges sucrées et rafraîchissantes.</p>
+          </div>
+        </div>
       </div>
     </section>
 
-    <section id="reservation" class="fade-section">
-      <h2>Réservation</h2>
-      <form id="reservationForm" novalidate>
-        <label for="name">Nom complet *</label>
-        <input type="text" id="name" name="name" required autocomplete="name" aria-required="true" />
+    <section id="reservation" class="fade-section" aria-labelledby="reservation-title">
+      <h2 id="reservation-title">Réservation</h2>
+      <form id="reservationForm" aria-describedby="confirmationMessage">
+        <label for="name">Nom complet</label>
+        <input type="text" id="name" name="name" required placeholder="Votre nom complet" autocomplete="name" />
 
-        <label for="email">Courriel *</label>
-        <input type="email" id="email" name="email" required autocomplete="email" aria-required="true" />
+        <label for="email">Adresse courriel</label>
+        <input type="email" id="email" name="email" required placeholder="exemple@courriel.com" autocomplete="email" />
 
-        <label for="phone">Téléphone *</label>
-        <input type="tel" id="phone" name="phone" required autocomplete="tel" aria-required="true" pattern="^[\d\s\-\+]{7,15}$" title="Entrez un numéro de téléphone valide." />
+        <label for="date">Date de réservation</label>
+        <input type="date" id="date" name="date" required min="" />
 
-        <label for="date">Date souhaitée *</label>
-        <input type="date" id="date" name="date" required aria-required="true" min="" />
+        <label for="time">Heure</label>
+        <input type="time" id="time" name="time" required />
 
         <label for="message">Message (optionnel)</label>
-        <textarea id="message" name="message" rows="4" placeholder="Besoin d’un arrangement spécial ?"></textarea>
+        <textarea id="message" name="message" rows="4" placeholder="Dites-nous si vous avez des demandes spéciales..."></textarea>
 
-        <button type="submit" aria-label="Envoyer la réservation">Réserver</button>
+        <button type="submit">Envoyer la réservation</button>
       </form>
       <div id="confirmationMessage" role="alert" aria-live="polite"></div>
     </section>
 
     <section id="contact" class="fade-section">
       <h2>Contact</h2>
-      <p>Équilibraction & Mocktail Bar</p>
-      <p>123, rue des Saveurs, Saint-Jean-sur-Richelieu, QC</p>
-      <p>Téléphone : <a href="tel:+14501234567">+1 450 123-4567</a></p>
-      <p>Courriel : <a href="mailto:contact@equilibraction.ca">contact@equilibraction.ca</a></p>
-      <p>Suivez-nous sur
-        <a href="https://www.facebook.com/Equilibraction" target="_blank" rel="noopener noreferrer">Facebook</a> et
-        <a href="https://www.instagram.com/Equilibraction" target="_blank" rel="noopener noreferrer">Instagram</a>
-      </p>
+      <p>Pour toute question ou demande spéciale, écrivez-nous à <a href="mailto:contact@equilibraction.ca">contact@equilibraction.ca</a> ou appelez-nous au <a href="tel:+1234567890">+1 234 567 890</a>.</p>
+      <p>Suivez-nous sur les réseaux sociaux :</p>
+      <div class="social-icons" role="list">
+        <a href="#" role="listitem" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" role="listitem" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="#" role="listitem" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+      </div>
     </section>
   </main>
 
   <footer>
-    <p>© 2025 Équilibraction & Mocktail Bar. Tous droits réservés.</p>
-    <div class="social-icons" aria-label="Liens vers réseaux sociaux">
-      <a href="https://www.facebook.com/Equilibraction" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
-      <a href="https://www.instagram.com/Equilibraction" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-      <a href="mailto:contact@equilibraction.ca" aria-label="Email"><i class="fas fa-envelope"></i></a>
-    </div>
+    &copy; 2025 Équilibraction & Mocktail Bar. Tous droits réservés.
   </footer>
 
-  <!-- Scripts -->
+  <!-- Swiper JS -->
   <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
 
   <script>
-    // Mobile nav toggle
+    // Mobile menu toggle
     const hamburger = document.getElementById('hamburger');
     const nav = document.getElementById('nav');
-
-    function toggleNav() {
+    hamburger.addEventListener('click', () => {
       hamburger.classList.toggle('active');
       nav.classList.toggle('active');
-    }
-
-    hamburger.addEventListener('click', toggleNav);
-    hamburger.addEventListener('keydown', e => {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        toggleNav();
-      }
     });
 
-    // Close nav on link click (mobile)
-    nav.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        if (nav.classList.contains('active')) {
-          toggleNav();
-        }
-      });
+    // Accessibility: toggle menu with keyboard on hamburger
+    hamburger.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        hamburger.click();
+      }
     });
 
     // Initialize Swiper
     const swiper = new Swiper('.swiper', {
       loop: true,
-      speed: 1200,
       autoplay: {
         delay: 7000,
         disableOnInteraction: false,
@@ -653,55 +645,48 @@
         nextEl: '.swiper-button-next',
         prevEl: '.swiper-button-prev',
       },
-      grabCursor: true,
+      effect: 'fade',
+      fadeEffect: {
+        crossFade: true
+      }
     });
 
-    // GSAP Animations
-    gsap.registerPlugin(ScrollTrigger);
-
-    // Animate sections on scroll
-    gsap.utils.toArray('.fade-section').forEach(section => {
-      gsap.fromTo(section,
-        { opacity: 0, y: 40 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 1,
-          ease: 'power3.out',
-          scrollTrigger: {
-            trigger: section,
-            start: 'top 85%',
-            toggleActions: 'play none none reverse'
-          }
-        });
-    });
-
-    // Reservation form date min attribute set to today
+    // Form minimum date for reservation (today)
     const dateInput = document.getElementById('date');
     const today = new Date().toISOString().split('T')[0];
     dateInput.setAttribute('min', today);
 
-    // Reservation form validation and submission simulation
+    // Reservation form submission
     const form = document.getElementById('reservationForm');
-    const confirmationMessage = document.getElementById('confirmationMessage');
+    const confirmation = document.getElementById('confirmationMessage');
 
-    form.addEventListener('submit', e => {
+    form.addEventListener('submit', (e) => {
       e.preventDefault();
 
-      // Simple validation check
-      if (!form.checkValidity()) {
-        form.reportValidity();
-        return;
-      }
+      // Simple front-end validation already ensured by required attributes
 
-      // Simulate submission delay
-      confirmationMessage.style.display = 'none';
+      confirmation.textContent = "Merci! Votre réservation a bien été envoyée.";
+      confirmation.style.display = 'block';
+      form.reset();
+    });
 
-      setTimeout(() => {
-        confirmationMessage.textContent = `Merci, ${form.name.value}! Votre réservation a bien été reçue. Nous vous contacterons bientôt.`;
-        confirmationMessage.style.display = 'block';
-        form.reset();
-      }, 800);
+    // Fade-in animation on scroll for sections
+    const fadeSections = document.querySelectorAll('.fade-section');
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          entry.target.style.opacity = 1;
+          entry.target.style.transform = 'translateY(0)';
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.15,
+    });
+
+    fadeSections.forEach(section => {
+      observer.observe(section);
     });
   </script>
 </body>
